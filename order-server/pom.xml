@@ -12,6 +12,12 @@
 
 
     <dependencies>
+        <!-- config client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -53,13 +59,14 @@
         </dependency>
 
         <dependency>
-        <groupId>com.studycloud</groupId>
-        <artifactId>product-client</artifactId>
+            <groupId>com.studycloud</groupId>
+            <artifactId>product-client</artifactId>
+            <version>${product-client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.studycloud</groupId>
-            <artifactId>product-common</artifactId>
-
+            <artifactId>order-common</artifactId>
+            <version>${order-common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -87,13 +94,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
 
 </project>

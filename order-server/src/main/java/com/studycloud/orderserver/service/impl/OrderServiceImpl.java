@@ -5,8 +5,6 @@ import com.studycloud.common.DecreaseStockInput;
 import com.studycloud.common.ProductInfoOutput;
 import com.studycloud.orderserver.dataObject.OrderDetail;
 import com.studycloud.orderserver.dataObject.OrderMaster;
-import com.studycloud.orderserver.dataObject.ProductInfo;
-import com.studycloud.orderserver.dto.CartDTO;
 import com.studycloud.orderserver.dto.OrderDTO;
 import com.studycloud.orderserver.enums.OrderStatusEnum;
 import com.studycloud.orderserver.enums.PayStatusEnum;
@@ -46,10 +44,12 @@ public class OrderServiceImpl implements OrderService {
             for(ProductInfoOutput productInfo:productInfos){
                 if(orderDetail.getProductId().equals(productInfo.getProductId())){
                     orderAmount =  productInfo.getProductPrice()
-                            .multiply(new BigDecimal(orderDetail.getProductQuantity())).add(orderAmount);
+                            .multiply(new BigDecimal(orderDetail.getProductQuantity()))
+                            .add(orderAmount);
                     BeanUtils.copyProperties(productInfo,orderDetail);
                     orderDetail.setOrderId(orderid);
                     orderDetail.setDetailId(KeyUtil.genUniqueKey());
+                    orderDetail.setProductPrice(productInfo.getProductPrice().doubleValue());
                     //订单详情入库
                     orderDetailMapper.saveOrderDetail(orderDetail);
                 }

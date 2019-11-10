@@ -45,16 +45,7 @@
                 <artifactId>product-client</artifactId>
                 <version>${product-client.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.studycloud</groupId>
-                <artifactId>product-common</artifactId>
-                <version>${product-common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.studycloud</groupId>
-                <artifactId>order-common</artifactId>
-                <version>${order-common.version}</version>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
