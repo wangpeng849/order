@@ -25,9 +25,23 @@ spring:
         enabled: true
         service-id: config
       profile: dev
+    bus:
+      id:  ${spring.application.name}:${spring.cloud.config.profile}:${random.value}
   application:
     name: order
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8762/eureka/
+
+#  不加这个导致Bus失败  或者加 bus.id 如上
+#vcap:
+#  application:
+#    instance_index: ${spring.cloud.config.profile}
+
+
+#app ：如果vcap.application.name存在，使用vcap.application.name，否则使用spring.application.name（默认值为application）
+#index ：配置值的情况下优先使用vcap.application.instance_index，否则依次使用spring.application.index、local.server.port、server.port（默认值0）
+#id: 如果vcap.application.instance_id存在，使用vcap.application.instance_id，否则给一个随机值
+
+
