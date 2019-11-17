@@ -40,6 +40,19 @@ eureka:
     service-url:
       defaultZone: http://localhost:8762/eureka/
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
 #  不加这个导致Bus失败  或者加 bus.id 如上
 #vcap:
 #  application:
