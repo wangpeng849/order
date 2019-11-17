@@ -27,8 +27,14 @@ spring:
       profile: dev
     bus:
       id:  ${spring.application.name}:${spring.cloud.config.profile}:${random.value}
+    stream:
+      bindings:
+        myMessage:
+          group: order #将消息队列加入组 同一个服务只消费一次队列
+          context-type: application/json
   application:
     name: order
+
 eureka:
   client:
     service-url:
@@ -43,5 +49,3 @@ eureka:
 #app ：如果vcap.application.name存在，使用vcap.application.name，否则使用spring.application.name（默认值为application）
 #index ：配置值的情况下优先使用vcap.application.instance_index，否则依次使用spring.application.index、local.server.port、server.port（默认值0）
 #id: 如果vcap.application.instance_id存在，使用vcap.application.instance_id，否则给一个随机值
-
-
